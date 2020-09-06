@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="vue.js"></script>
+		<style>
+			[v-cloak]{
+				display:none;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app" v-cloak>   <!-- cloak斗篷，该属性在未编译完成的时候存在，成功后自动消失,配合属性选择器使用 -->
+			{{message}}
+		</div>
+		<script>
+		setTimeout(function(){
+			const app=new Vue({
+				el:'#app',   
+				data:{     
+					message:"nihao"
+				},
+				methods:{
+					
+				}
+			});
+		},3000)
+			
+		</script>
+	</body>
+</html>

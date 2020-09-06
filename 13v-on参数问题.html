@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<!-- 1.事件调用的方不用形参,有无括号都可 -->
+			<button v-on:click="btn1()">按钮1</button>
+			<button @click="btn1">按钮1</button>
+			
+            <!--2.方法中需要形参传入时，如果实参省略了则会以undefind呈现，
+			如果连括号都省略则会将浏览器产生的event事件对象作为参数传入 -->
+			<button v-on:click="btn2(123)">按钮2</button>
+			<button v-on:click="btn2()">按钮2</button>
+			<button v-on:click="btn2">按钮3</button>
+			
+			<!-- 3.如果既需要event也需要其他参数，则可以用$event作为实参调用 -->
+			<button v-on:click="btn3(456,$event)">按钮3</button>			
+
+		</div>
+		<script>
+			const app=new Vue({
+				el:'#app',   
+				data:{     
+
+				},
+				methods:{
+					btn1(){
+						console.log("btn1");
+					},
+					btn2(a){
+						console.log("-------"+a);
+					},
+					btn3(a,b){
+						console.log("+++++++"+a,b);
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<cpn></cpn>
+			<cpn></cpn>
+			<cpn ref="aaa"></cpn>
+			<button @click="btn">按钮</button>
+		</div>
+		
+		<template id="cpn">
+			<div>
+				<h2>我是子组件</h2>
+			</div>
+		</template>
+		
+		<script>
+			const app=new Vue({
+				el:'#app',   
+				data:{     
+
+				},
+				methods:{
+					btn(){
+						 // 1.通过$children及其下标获得子组件的数据和方法
+						console.log(this.$children[0]);
+						for(let c of this.$children){   
+							console.log(c.name);
+							c.showmessage();
+						}
+						//2.通过$refs以及具体的ref名字获得对应子组件的数据和方法，对象类型默认是一个空对象
+						console.log(this.$refs.aaa);   
+						
+						console.log(this.$refs.aaa.name); 
+					}
+				},
+				components:{
+					'cpn':{
+						template:'#cpn',
+						methods:{
+							showmessage(){
+								console.log("showmessage");
+							}
+						},
+						data(){
+							return {
+								name:"子组件name"
+							}
+						}
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

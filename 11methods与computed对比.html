@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<h2>{{fullname1()}}</h2>
+			<h2>{{fullname1()}}</h2>
+			<h2>{{fullname1()}}</h2>
+			<h2>{{fullname1()}}</h2>
+			<h2>{{fullname1()}}</h2>
+			
+			<h2>{{fullname2}}</h2>
+			<h2>{{fullname2}}</h2>
+			<h2>{{fullname2}}</h2>
+			<h2>{{fullname2}}</h2>
+			<h2>{{fullname2}}</h2>
+		</div>
+		<script>
+			const app=new Vue({
+				el:'#app',   
+				data:{     
+					firstname:"kobe",
+					lastname:"bryant"
+				},
+				methods:{
+					fullname1:function(){
+						console.log("fullname1()");
+						return this.firstname+" "+this.lastname;
+					}
+				},
+				computed:{       //值在未改变的情况下会有缓存，只调用一次，不会被重复调用
+					fullname2:function(){
+						console.log("fullname2");
+						return this.firstname+" "+this.lastname;
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

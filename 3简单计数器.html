@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<h2>当前计数:{{count}}</h2>      <!-- 非变量直接写在html中 -->
+			<button v-on:click="count++">+</button>     <!-- 两种执行监听事件的方法 -->
+			<button @click="sub">-</button>
+		</div>
+		<script>
+			const app=new Vue({
+				el:"#app",
+				data:{
+					count:0
+				},
+				methods:{     //记得加s
+					sub:function(){      
+						this.count--;    //记得加this，否则无法访问到count,proxy代理
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

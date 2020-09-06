@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<cpn></cpn>
+			<cpn>    
+			   <!-- 父级获取子级作用域数据 -->
+				<template v-slot:todo="slotProps">    <!-- default是因为匿名，slotProps名字可以任取 -->
+					<span>{{slotProps.plang.join('-')}}</span>
+				</template>
+			</cpn>
+		</div>
+		<template id="cpn">
+			<div>
+				<slot :plang="plang" name="todo">
+					<ul>
+						<li v-for="item in plang">{{item}}</li>
+					</ul>
+				</slot>
+			</div>
+		</template>
+		<script>
+			// 父组件替换插槽标签,而内容由子组件提供
+			const app=new Vue({
+				el:'#app',   
+				data:{     
+
+				},
+				methods:{
+					
+				},
+				components:{
+					cpn:{
+						template:"#cpn",
+						data(){
+							return {
+								plang:['js','html','css']
+							}
+						}
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

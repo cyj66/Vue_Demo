@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<!-- 3.使用组件 -->
+			<mycpn></mycpn>
+			<div>
+				<mycpn></mycpn>
+			</div>
+			<mycpn2></mycpn2>
+			<div>
+				<mycpn2></mycpn2>
+			</div>
+		</div>
+		
+		<div id="app2">
+			<mycpn></mycpn>
+			<div>
+				<mycpn></mycpn>
+			</div>
+			<mycpn2></mycpn2>
+			<div>
+				<mycpn2></mycpn2>
+			</div>
+		</div>
+		<mycpn></mycpn>    <!-- 不能在管理区域外，会没效果 -->
+		<script>
+			//1.创建组件构造器对象
+			const cpnC=Vue.extend({     //区别ES6中的继承extends
+				//模板字符串必须有一个根标签
+				template:`        
+				<div>
+					<h2>我是标题</h2>
+					<p>我是内容</p>
+				</div>`
+			});
+			//2.注册组件（此处为全局组件，可以在多个vue实例下面使用）
+			Vue.component('mycpn',cpnC);    //要以什么标签展示，组件构造器名
+			
+			const app=new Vue({
+				el:'#app',   
+				data:{     
+
+				},
+				methods:{
+					
+				},
+				components:{     //组件属性
+					mycpn2:cpnC    //此处为局部组件，要以什么标签展示:组件构造器名
+				}
+			});
+			const app2=new Vue({
+				el:'#app2'
+			})
+		</script>
+	</body>
+</html>

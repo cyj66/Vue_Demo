@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<h2 v-if="score>=90">优秀</h2>
+			<h2 v-else-if="score>=80">良好</h2>
+			<h2 v-else-if="score>=60">及格</h2>
+			<h2 v-else>不及格</h2>
+			<h1>{{result}}</h1>
+		</div>
+		<script>
+			const app=new Vue({
+				el:'#app',   
+				data:{     
+					score:99
+				},
+				methods:{
+					
+				},
+				computed:{
+					result(){
+						let str="";
+						if(this.score>=90){
+							str="优秀";
+						}
+						else if(this.score>=80){
+							str="良好";
+						}
+						else if(this.score>=60){
+							str="及格";
+						}
+						else{
+							str="不及格";
+						}
+						return str;
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

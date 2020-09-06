@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="vue.js"></script>
+		<style>
+			.red{
+				color:red;
+			}
+			.big{
+				font-size:100px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<!-- <img src="{{imgurl}}" alt="">   错误 -->
+			<!-- <img src="imgurl" alt="">   错误 -->
+			
+			 <!-- 1.动态绑定属性 -->
+			<img v-bind:src="imgurl" alt="">     
+			<a v-bind:href="ahref">链接</a>
+			
+			<!-- 2.语法糖写法 -->
+			<img :src="imgurl" alt="">      
+			<a :href="ahref">链接</a>
+			
+			<!-- 3.动态绑定class属性——对象语法-->
+			<!-- <h1 v-bind:class="{类名1:bool,类名2:bool}">{{message}}</h1> -->
+			<h1 class="guding" v-bind:class="{red:isred,big:isbig}">{{message}}</h1>
+			<h1 class="guding" v-bind:class="getclasses()">{{message}}</h1>
+			<button v-on:click="btn">按钮</button>
+		</div>
+		<script>
+			const app=new Vue({
+				el:'#app',   
+				data:{     
+					imgurl:"https://i2.hdslb.com/bfs/archive/2b71355c3a3166abf2714dd1e982fedb82ed254c.jpg@412w_232h_1c_100q.jpg",
+					ahref:"http://www.baidu.com",
+					message:"你好啊",
+					isred:true,
+					isbig:false
+				},
+				methods:{
+					btn:function(){
+						this.isbig=!this.isbig;
+						this.isred=!this.isred;    //记得要this
+					},
+					getclasses:function(){
+						return {red:this.isred,big:this.isbig};    //将对象封装成函数
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

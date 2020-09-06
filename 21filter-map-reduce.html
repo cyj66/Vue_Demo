@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			num=[12,88,97,102,6389,789];
+			// //1.遍历并筛选return为true的（过滤）
+			// let newnum1=num.filter(function(value){
+			// 	//return true;    //全部返回
+			// 	return value<100;    //返回true的
+			// });
+			// console.log(newnum1);
+			// //2.遍历并按照return操作每个元素（映射）
+			// let newnum2=num.map(function(value){
+			// 	return value*2;   
+			// });
+			// console.log(newnum2);
+			
+			// //3.累加，array.reduce(function(total, currentValue, currentIndex（非必需）, arr（非必需）), initialValue)
+			// let total=num.reduce(function(prevalue,n){
+			// 	return prevalue+n;   
+			// },0);      //0为pre的初始值，pre在接下来的运算中都是return出来的值
+			// console.log(total);
+			
+			//综上，链式编程，函数式编程
+			// let total=num.filter(function(n){
+			// 	return n<100;
+			// }).map(function(n){
+			// 	return n*2;
+			// }).reduce(function(sum,n){
+			// 	return sum+n;
+			// },0);
+			// console.log(total);
+			let total=num.filter(n=>n<100).map(n=>n*2).reduce((sum,n)=>sum+n);
+			console.log(total);
+		</script>
+	</body>
+</html>

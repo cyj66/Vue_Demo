@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<button>按钮1</button>
+		<button>按钮2</button>
+		<button>按钮3</button>
+		<button>按钮4</button>
+		<button>按钮5</button>
+		
+		<script>
+			var btn=document.querySelectorAll('button');
+			//1.直接用let,简单粗暴
+			// for(let i=0;i<btn.length;i++){
+			// 	btn[i].onclick=function(){
+			// 		console.log(i);
+			// 	}
+			// }
+			//2.立即执行函数，闭包
+			// for(var i=0;i<btn.length;i++){
+			// 	(function(i){
+			// 		btn[i].onclick=function(){
+			// 			console.log(i);
+			// 		}
+			// 	})(i);
+			// }
+			//3.给index存放索引值
+			for(var i=0;i<btn.length;i++){
+				btn[i].index=i;
+				btn[i].onclick=function(){
+			 		console.log(this.index);
+				}
+			}
+		</script>
+	</body>
+</html>

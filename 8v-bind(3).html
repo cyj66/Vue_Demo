@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="vue.js"></script>
+	</head>
+	<body>
+		<!-- 动态绑定CSS属性 -->
+		<div id="app">
+			<!-- <h2 :style="{key:value}">{{message}}</h2> -->
+			<h2 :style="{fontSize:'100px'}">{{message}}</h2>   <!-- 100px要加引号,key刻意不加引号，value必须加，否则字符串会被当成变量 -->
+			<h2 :style="{fontSize:fz}">{{message}}</h2>
+			<h2 :style="{fontSize:fz2+'px'}">{{message}}</h2>
+			<!-- 数组语法,在数组里套对象-->
+			<h2 :style="[colorred,bgcblack]">{{message}}</h2>
+		</div>
+		<script>
+			const app=new Vue({
+				el:'#app',   
+				data:{     
+					message:"你好",
+					fz:"100px",
+					fz2:100,
+					colorred:{color:'red'},
+					bgcblack:{backgroundColor:'black'}
+				},
+				methods:{
+					
+				}
+			})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<ul>
+				<li v-for="item in letters">{{item}}</li>
+				<button @click="btn">按钮</button>
+			</ul>
+		</div>
+		<script>
+			const app = new Vue({
+				el: '#app',
+				data: {
+					letters: ['a', 'b', 'c', 'd', 'e']
+				},
+				methods: {
+					btn() {
+						// this.letters.push('aaa', 'bbb', 'ccc');
+						//pop shift unshift splice sort reverse
+						//注意：通过索引值修改数组中的元素不是响应式的，即界面上不会改变
+						//this.letters[0]='xxxx';
+						//1.用splice
+						this.letters.splice(0,1,'xxxx');    
+						//2.Vue.set(要修改的对象，索引值，修改后的值)
+						Vue.set(this.letters,1,'yyyy');
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

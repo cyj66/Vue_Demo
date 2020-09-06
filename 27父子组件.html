@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<cpn1></cpn1><!-- 是局部组件，需再注册 -->
+			<cpn2></cpn2>
+		</div>
+		<script>
+			const cpnc1=Vue.extend({
+				template:`
+				<div>
+					<h2>我是标题1</h2>
+					<p>我是内容1</p>
+				</div>`
+			});
+			const cpnc2=Vue.extend({
+				template:`
+				<div>
+					<h2>我是标题2</h2>
+					<p>我是内容2</p>
+					<cpn1></cpn1>
+				</div>`,  
+				components:{     //在一个组件的创建里面注册另一个组件，则可引用另一个组件,构成父子组件
+					cpn1:cpnc1   
+				}
+			});
+			
+			//root组件
+			const app=new Vue({
+				el:'#app',   
+				data:{     
+
+				},
+				methods:{
+					
+				},
+				components:{
+					cpn2:cpnc2,//该组件2也必须注册才可使用
+					cpn1:cpnc1 
+				}
+			})
+			
+			
+		</script>
+	</body>
+</html>

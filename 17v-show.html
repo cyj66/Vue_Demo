@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<!-- v-if:当条件为false,从dom中消失,只有一次切换选择v-if -->
+			<h2 v-if="isshow" class="gone">{{message}}</h2>
+			<!-- v-show:当条件为false,增加行内样式display:none ,频繁切换选择v-show-->
+			<h2 v-show="isshow" class="hide">{{message}}</h2>
+		</div>
+		<script>
+			const app=new Vue({
+				el:'#app',   
+				data:{     
+					isshow:true,
+					message:"你好"
+				},
+				methods:{
+					
+				}
+			})
+		</script>
+	</body>
+</html>

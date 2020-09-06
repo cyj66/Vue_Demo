@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<cpn>
+				<template v-slot:left>
+					<button>替换左边</button>    <!-- 有则替换对应插槽名，没有则替换无名的 -->
+				</template>
+				<h2>我会替换无名氏</h2>
+			</cpn>
+		</div>
+		<template id="cpn">
+			<div>
+				<slot name="left"><span>左</span></slot>
+				<slot name="center"><span>中</span></slot>
+				<slot name="right"><span>右</span></slot>
+				<slot><p>我没有名字会被替换</p></slot>      <!-- 匿名插槽 -->
+			</div>
+		</template>
+		<script>
+			const app=new Vue({
+				el:'#app',   
+				data:{     
+
+				},
+				methods:{
+					
+				},
+				components:{
+					cpn:{
+						template:"#cpn"
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

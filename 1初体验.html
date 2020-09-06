@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="vue.js"></script>
+	</head>
+	<body>
+		<div id="app">{{message}}</div>
+		<div>{{message}}</div>
+		<script>
+			//传统的js编程范式是命令式编程，vue是声明式编程
+			const app=new Vue({
+				el:'#app',    //用于挂载要管理的元素
+				data:{     //定义数据
+					message:'hellovue'
+				}
+			})
+		</script>
+	</body>
+</html>

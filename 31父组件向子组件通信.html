@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<cpn :cmovies="movies" :cmessage="message"></cpn>     <!-- v-bind后面不支持驼峰，要转成-连接 -->
+		</div>
+		<template id="cpn">
+			<div>
+				<ul>
+					<li v-for="item in cmovies">{{item}}</li>
+				</ul>
+				<h2>{{cmessage}}</h2>
+			</div>
+		</template>
+		<script>
+			const app=new Vue({
+				el:'#app',   
+				data:{     
+					message:"你好",
+					movies:['海王','海贼王','海盗王','孩子王']
+				},
+				methods:{
+					
+				},
+				components:{         
+					'cpn':{
+						template:'#cpn',
+						 //props:["cmovies","cmessage"]    //父传子，props,数组语法，里面的值看作变量
+							 props:{     //对象语法
+								 //1.类型限制
+								 // cmovies:Array,
+								 // cmessage:String
+								 //2.还可以提供默认值,以及要求必传
+								 cmessage:{     
+									 type:String,
+									 default:'aaaa',
+									 required:true    
+								 },
+								 //类型是对象或者数组，默认值必须是一个函数
+								 cmovies:{
+									 type:Array,
+									 default(){
+										 return [];
+									 }
+								 }
+							 }
+					}	
+				}
+			})
+		</script>
+	</body>
+</html>

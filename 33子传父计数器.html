@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<h2>当前计数为：{{total}}</h2>
+			<cpn @btnclick1="changecount" @btnclick2="changecount"></cpn>
+		</div>
+		<template id="cpn">
+			<div>
+				<button @click="sub">-</button>
+				<button @click="add">+</button>
+			</div>
+		</template>
+		<script>
+			const app=new Vue({
+				el:'#app',   
+				data:{     
+					total:0
+				},
+				methods:{
+					changecount(count){
+						this.total=count;
+					}
+				},
+				components:{
+					'cpn':{
+						template:'#cpn',
+						data(){
+							return {
+								count:0
+							}
+						},
+						methods:{
+							sub(){
+								this.count--;
+								this.$emit('btnclick1',this.count);
+							},
+							add(){
+								this.count++;
+								this.$emit('btnclick2',this.count);
+							}
+						}
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

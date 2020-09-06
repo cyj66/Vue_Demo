@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			{{fullname}}
+		</div>
+		<script>
+			const app=new Vue({
+				el:'#app',   
+				data:{     
+					firstname:"kobe",
+					lastname:"bryant"
+				},
+				methods:{
+					
+				},
+				//计算属性一般没有set方法，是只读属性，此时就可以简写
+				computed:{
+					fullname:{     
+						// set:function(newvalue){
+						// 	const name=newvalue.split(" ");
+						// 	this.firstname=name[0];
+						// 	this.lastname=name[1];
+						// },
+						get:function(){
+							return this.firstname+" "+this.lastname;
+						}
+					}
+					//简写为，由不简写方式可看出，fullname只是个属性
+					// fullname:function(){
+					// 	return this.firstname+" "+this.lastname;
+					// }
+				}
+			})
+		</script>
+	</body>
+</html>

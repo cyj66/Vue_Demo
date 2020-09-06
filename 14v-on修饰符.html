@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="vue.js"></script>
+		<style>
+			div{
+				width: 200px;
+				height: 200px;
+				background-color: palegoldenrod;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<!-- 1.stop:阻止事件冒泡 -->
+			<div @click="div">
+				<button @click.stop="btn">按钮</button>
+			</div>
+			<!-- 2.prevent:阻止默认行为 -->
+			<a href="http://www.baidu.com" @click.prevent>百度</a>
+			<!-- 3——keyup.某个按键，监听某个按键 -->
+			<input type="text" @keyup.o="keyup">
+			<input type="text" @keyup.enter="keyup">
+			<!-- 4.once，只会触发一次-->
+			<button @click.once="once">只有一次有效</button>
+		</div>
+		<script>
+			const app=new Vue({
+				el:'#app',   
+				data:{     
+
+				},
+				methods:{
+					div(){
+						console.log("div");
+					},
+					btn(){
+						console.log("btn");
+					},
+					keyup(){
+						console.log("up");
+					},
+					once(){
+						console.log("once");
+					}
+				}
+			})
+		</script>
+	</body>
+</html>
